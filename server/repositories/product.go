@@ -33,7 +33,7 @@ func (r *repository) FindProducts() ([]models.Product, error) {
 
 func (r *repository) GetProduct(ID int) (models.Product, error) {
 	var product models.Product
-	err := r.db.First(&product).Error
+	err := r.db.First(&product, ID).Error
 
 	return product, err
 }
