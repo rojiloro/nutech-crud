@@ -1,4 +1,5 @@
 import axios from "axios";
+import { API } from "../config/api";
 
 export const GET_LIST_PRODUCT = "GET_LIST_PRODUCT";
 export const ADD_PRODUCT = "ADD_PRODUCT";
@@ -21,7 +22,7 @@ export const getListProduct = () => {
     // get API
     axios({
       method: "GET",
-      url: "http://localhost:5000/api/v1/products",
+      url: `${API}/api/v1/products`,
       timeout: 120000,
     })
       .then((response) => {
@@ -63,7 +64,7 @@ export const addProduct = (data) => {
     // post API
     axios({
       method: "POST",
-      url: "http://localhost:5000/api/v1/product",
+      url: `${API}/api/v1/product`,
       timeout: 120000,
       data: data,
     })
@@ -98,7 +99,7 @@ export const deleteProduct = (id) => {
     // post API
     axios({
       method: "DELETE",
-      url: "http://localhost:5000/api/v1/product/" + id,
+      url: `${API}/api/v1/product/` + id,
       timeout: 120000,
     })
       .then((response) => {
@@ -146,7 +147,7 @@ export const updateProduct = (data) => {
     // post API
     axios({
       method: `PATCH`,
-      url: `http://localhost:5000/api/v1/update-product/` + data.id,
+      url: `${API}/api/v1/update-product/` + data.id,
       timeout: 120000,
       data: data?.formData,
     })
