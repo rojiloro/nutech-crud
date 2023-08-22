@@ -4,6 +4,7 @@ import (
 	"CRUD/database"
 	"CRUD/pkg/mysql"
 	"CRUD/routes"
+	"os"
 
 	"github.com/joho/godotenv"
 	"github.com/labstack/echo/v4"
@@ -12,8 +13,8 @@ import (
 
 func main() {
 	godotenv.Load()
-    e := echo.New()
-    mysql.DatabaseInit()
+	e := echo.New()
+	mysql.DatabaseInit()
 	database.RunMigration()
 
 	e.Use(middleware.CORSWithConfig(middleware.CORSConfig{
@@ -23,7 +24,7 @@ func main() {
 	}))
 
 	routes.RouteInit(e.Group("/api/v1"))
+	var PORT = os.Getenv("PORT")
 
-	
-    e.Logger.Fatal(e.Start("localhost:5000"))
+	e.Logger.Fatal(e.Start(":" + PORT))
 }
