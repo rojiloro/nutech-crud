@@ -27,11 +27,11 @@ func (h *handlerProduct) CreateProduct(c echo.Context) error {
 	qty, _ := strconv.Atoi(c.FormValue("qty"))
 
 	request := productsdto.CreateProductRequest{
-		Image:    image,
-		Name:     c.FormValue("name"),
-		Purchase: purchase,
-		Selling:  selling,
-		Qty:      qty,
+		Image:       image,
+		ProductName: c.FormValue("productName"),
+		Purchase:    purchase,
+		Selling:     selling,
+		Qty:         qty,
 	}
 
 	validation := validator.New()
@@ -42,12 +42,12 @@ func (h *handlerProduct) CreateProduct(c echo.Context) error {
 	}
 
 	product := models.Product{
-		ID:       0,
-		Image:    request.Image,
-		Name:     request.Name,
-		Purchase: request.Purchase,
-		Selling:  request.Selling,
-		Qty:      request.Qty,
+		ID:          0,
+		Image:       request.Image,
+		ProductName: request.ProductName,
+		Purchase:    request.Purchase,
+		Selling:     request.Selling,
+		Qty:         request.Qty,
 	}
 
 	data, err := h.ProductRepositories.CreateProduct(product)
@@ -83,7 +83,7 @@ func (h *handlerProduct) GetProduct(c echo.Context) error {
 func (h *handlerProduct) UpdateProduct(c echo.Context) error {
 	image := c.Get("dataFile").(string)
 	id, _ := strconv.Atoi(c.Param("id"))
-	purchase, _ := strconv.Atoi(c.Param("purchase"))
+	purchase, _ := strconv.Atoi(c.FormValue("purchase"))
 	selling, _ := strconv.Atoi(c.FormValue("selling"))
 	qty, _ := strconv.Atoi(c.FormValue("qty"))
 
@@ -94,11 +94,11 @@ func (h *handlerProduct) UpdateProduct(c echo.Context) error {
 	}
 
 	request := productsdto.UpdateProductRequest{
-		Image:    image,
-		Name:     c.FormValue("name"),
-		Purchase: purchase,
-		Selling:  selling,
-		Qty:      qty,
+		Image:       image,
+		ProductName: c.FormValue("productName"),
+		Purchase:    purchase,
+		Selling:     selling,
+		Qty:         qty,
 	}
 
 	validation := validator.New()
@@ -111,8 +111,8 @@ func (h *handlerProduct) UpdateProduct(c echo.Context) error {
 	if request.Image != "" {
 		product.Image = request.Image
 	}
-	if request.Name != "" {
-		product.Name = request.Name
+	if request.ProductName != "" {
+		product.ProductName = request.ProductName
 	}
 	if request.Purchase != 0 {
 		product.Purchase = request.Purchase

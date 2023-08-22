@@ -1,11 +1,9 @@
 import React, { useState } from "react";
-import foto from "../assets/react.svg";
-import ModalAdd from "./modalAdd";
-import ModalDelete from "./modalDelete";
+import ModalAdd from "../modal/modalAdd";
+import ListProduct from "../list-product/listProduct";
 
 export default function Table(props) {
   const [show, setShow] = useState(false);
-  const [showDelete, setShowDelete] = useState(false);
 
   return (
     <>
@@ -17,6 +15,7 @@ export default function Table(props) {
           Add Product
         </div>
       </div>
+
       <div className="container mt-3 fs-6 rounded fw-semibold">
         <div className="row bg-success text-white">
           <div className="col">No</div>
@@ -27,26 +26,9 @@ export default function Table(props) {
           <div className="col">Qty</div>
           <div className="col text-center">Action</div>
         </div>
-        <div className="row mt-4">
-          <div className="col">1</div>
-          <div className="col">
-            <img src={foto} alt="" />
-          </div>
-          <div className="col">React</div>
-          <div className="col">8000</div>
-          <div className="col">10000</div>
-          <div className="col">999</div>
-          <div className="col d-flex justify-content-between">
-            <div className="btn btn-primary fw-semibold">Edit</div>
-            <div className="btn btn-danger fw-semibold" onClick={() => setShowDelete(true)}>
-              Delete
-            </div>
-          </div>
-        </div>
-        <hr />
+        <ListProduct />
       </div>
       <ModalAdd show={show} setShow={setShow} />
-      <ModalDelete showDelete={showDelete} setShowDelete={setShowDelete} />
     </>
   );
 }
