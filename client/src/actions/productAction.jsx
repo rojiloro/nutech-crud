@@ -1,5 +1,4 @@
 import axios from "axios";
-import { API } from "../config/api";
 
 export const GET_LIST_PRODUCT = "GET_LIST_PRODUCT";
 export const ADD_PRODUCT = "ADD_PRODUCT";
