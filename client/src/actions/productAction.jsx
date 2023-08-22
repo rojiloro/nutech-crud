@@ -22,7 +22,7 @@ export const getListProduct = () => {
     // get API
     axios({
       method: "GET",
-      url: API + `/products`,
+      url: "https://nutech-crud-production.up.railway.app/api/v1/products",
       timeout: 120000,
     })
       .then((response) => {
@@ -64,7 +64,7 @@ export const addProduct = (data) => {
     // post API
     axios({
       method: "POST",
-      url: API + `/product`,
+      url: "https://nutech-crud-production.up.railway.app/api/v1/product",
       timeout: 120000,
       data: data,
     })
@@ -99,7 +99,7 @@ export const deleteProduct = (id) => {
     // post API
     axios({
       method: "DELETE",
-      url: API + `/product/` + id,
+      url: "https://nutech-crud-production.up.railway.app/api/v1/product/" + id,
       timeout: 120000,
     })
       .then((response) => {
@@ -147,7 +147,7 @@ export const updateProduct = (data) => {
     // post API
     axios({
       method: `PATCH`,
-      url: API + `/update-product/` + data.id,
+      url: "https://nutech-crud-production.up.railway.app/api/v1/update-product/" + data.id,
       timeout: 120000,
       data: data?.formData,
     })
