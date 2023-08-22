@@ -22,7 +22,7 @@ export const getListProduct = () => {
     // get API
     axios({
       method: "GET",
-      url: `${API}/api/v1/products`,
+      url: `${API}/products`,
       timeout: 120000,
     })
       .then((response) => {
@@ -64,7 +64,7 @@ export const addProduct = (data) => {
     // post API
     axios({
       method: "POST",
-      url: `${API}/api/v1/product`,
+      url: `${API}/product`,
       timeout: 120000,
       data: data,
     })
@@ -99,7 +99,7 @@ export const deleteProduct = (id) => {
     // post API
     axios({
       method: "DELETE",
-      url: `${API}/api/v1/product/` + id,
+      url: `${API}/product/` + id,
       timeout: 120000,
     })
       .then((response) => {
@@ -147,7 +147,7 @@ export const updateProduct = (data) => {
     // post API
     axios({
       method: `PATCH`,
-      url: `${API}/api/v1/update-product/` + data.id,
+      url: `${API}/update-product/` + data.id,
       timeout: 120000,
       data: data?.formData,
     })
